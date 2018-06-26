@@ -1,0 +1,52 @@
+/* .content{
+  background-color: #aaaaaa;
+}
+.userName{
+    top: 0px;
+    left: 0;
+    margin-right:999px;
+}
+.account-register{
+  left: 0;
+  top: 3px;
+} */
+.content{
+  background-color: #eee;
+}
+.header{
+  display: flex;
+  margin: 20rpx 20rpx 0rpx 20rpx;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #eee;
+}
+.header .hd-left .userPic{
+  position: relative;
+  height: 146rpx;
+  width: 234rpx;
+}
+.header .hd-right{
+  flex: 1;
+  height: 146rpx;
+  padding-left: 20rpx;
+  overflow: hidden;
+}
+.header .hd-right .userName{
+  height: 88rpx;
+  font-size: 33rpx;
+  line-height: 44rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+.header .hd-right .account-register{
+  display: inline-block;
+  height: 48rpx;
+  line-height: 87rpx;
+  margin-right: 20rpx;
+  font-size: 30rpx;
+  padding-bottom: 10rpx;
+}

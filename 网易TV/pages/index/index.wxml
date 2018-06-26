@@ -1,0 +1,80 @@
+<view class="container">
+    <!-- 图片滑动区 -->
+        <view class="swiper-container">
+             <swiper class="swiper_box" 
+                         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+                 <block wx:for="{{banners}}" wx:key="id" >
+                     <swiper-item>
+                         <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" class="slide-image" width="750rpx" height="562.5rpx"/>
+                     </swiper-item>
+                 </block>
+             </swiper>
+             <view class="dots">  
+                 <block wx:for="{{banners}}" wx:key="unique">  
+                     <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+                 </block>  
+             </view>  
+        </view>
+        <!-- 搜索区 -->
+    <view class="search-view" style="background:{{scrollTop === 0 ?'-webkit-linear-gradient(top, rgba(105,195,170, 1), rgba(105,195,170, 0.3))' :( scrollTop<200 ? 'rgba(105,195,170,'+(scrollTop/400+0.3) +')' : 'rgba(105,195,170,1)')  }} ">
+         <view class="search-content">
+           <image src="/images/search-pic.png" class="search-icon" />
+           <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch' bindfocus="viewSearch">
+           </input>
+           <button class='search-btn' bindtap="toSearch">搜索
+           </button>
+         </view>
+     </view>
+     <!-- 类型区 -->
+     <view class="type-container" >
+         <view class="type-box">
+             <navigator class="nav" hover-class="nav_active" url="../na1-detail/detail">
+                 <image src="../../images/jiangjie.png" style="margin: 16px;height: 60px;width: 60px;float: left"></image>
+             </navigator>
+             <navigator class="nav" hover-class="nav_active" url="../na1-detail/detail">
+                    <image src="../../images/rumen.png" style="margin: 16px;height: 60px;width: 60px;float:left"></image>
+            </navigator>
+            <navigator class="nav" hover-class="nav_active" url="../na1-detail/detail">
+                    <image src="../../images/zhaunxiang.png" style="margin: 16px;height: 60px;width: 60px;float:left"></image>
+            </navigator>
+            <navigator class="nav" hover-class="nav_active" url="../na1-detail/detail">
+                    <image src="../../images/shetuan.png" style="margin: 16px;height: 60px;width: 60px;float:left"></image>
+            </navigator>
+         </view>
+     </view>
+     <!-- 视频新品区 -->
+     <view class="wrapper">
+            <view 
+            wx:for="{{articleList}}"
+            wx:for-item="group"
+            wx:key="{{group.date}}"
+            class="group">
+              <view class="group-bar">
+                <view class="group-title {{group.formateDate==='今日'?'on':''}}">
+                  {{group.date}}
+                </view>
+              </view>
+              <view class="group-content">
+                <view
+                  wx:for="{{group.articles}}"
+                  wx:for-item="article"
+                  wx:key="{{item.contentId}}"
+                  class="group-content-item {{article.hasVisited?'visited':''}}"
+                  data-item="{{article}}"
+                  bindtap="showDetail">
+                  <view class="group-content-item-desc ellipsis-multi-line ellipsis-line-3">
+                    {{article.title}}
+                  </view>
+                  <!-- <view class="group-discription">
+                        {{article.discription}}
+                      </view>
+                      <view class="group-number">
+                            {{article.number}}
+                          </view> -->
+                  <image mode="aspectFill" class="group-content-item-img"
+                  src="{{article.cover || defaultImg.coverImg}}"/>
+                </view>
+              </view>
+            </view>
+          </view>
+ </view>

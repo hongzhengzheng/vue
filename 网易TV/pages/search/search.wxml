@@ -1,0 +1,15 @@
+<view class="search-hd">
+  <view class="search-area">
+    <form bindsubmit="searchA">
+      <view class="search-type" bindtap="changeSearchType">{{searchType == 'keyword' ? '默认' : '类型'}}</view>
+      <input class="search-txt" name="keyword" confirm-type="search" bindconfirm="searchB" placeholder="{{searchType == 'keyword' ? 'q请输入课程视频名称、标题或讲师' : '请输入视频类型，如：前端、人工智能'}}" />
+      <button class="search-btn" formType="submit">搜索</button>
+    </form>
+  </view>
+  <view class="search-keyword" wx:if="{{hotKeyword && hotTag}}">
+    <view class="search-keyword-title">热门观看</view>
+    <view wx:for="{{hotKeyword}}" wx:for-item="hotKeywordItem" wx:key="idx" class="search-keyword-item" data-keyword="{{hotKeywordItem.title}}" bindtap="searchByKeyword">{{hotKeywordItem.title}}</view>
+    <view class="search-keyword-title">喜欢类型</view>
+    <view wx:for="{{hotTag}}" wx:for-item="hotTagItem" wx:key="hotTagItem" class="search-keyword-item" data-keyword="{{hotTagItem}}" bindtap="searchByTag">{{hotTagItem}}</view>
+  </view>
+</view>
